@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "baseUrl": "https://jsonplaceholder.typicode.com/"
+  },
+  "prod": {
+    "baseUrl": "https://jsonplaceholder.typicode.com/"
+  }
+}
