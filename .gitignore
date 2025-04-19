@@ -43,3 +43,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Generated files
+lib/**/*.freezed.dart
+lib/**/*.g.dart
+lib/**/*.gen.dart
+lib/**/*.gr.dart
+lib/**/*.config.dart
