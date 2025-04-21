@@ -5,6 +5,8 @@ import 'package:flutter_skill_showcase/src/config/service_locator/service_locato
 
 enum Flavor { dev, prod }
 
+Config get config => getIt<Config>();
+
 class Config {
   Config({required this.flavor, required this.baseUrl});
 
@@ -19,6 +21,6 @@ class Config {
     final json = jsonDecode(configJsonString) as Map<String, dynamic>;
     final flavorConfig = json[flavor.name];
 
-    getit.registerLazySingleton(() => Config._(flavor, flavorConfig));
+    getIt.registerLazySingleton(() => Config._(flavor, flavorConfig));
   }
 }
