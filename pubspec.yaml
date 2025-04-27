@@ -49,6 +49,7 @@ dependencies:
   nested: ^1.0.0
   dartz: ^0.10.1
   dio: ^5.8.0+1
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:
