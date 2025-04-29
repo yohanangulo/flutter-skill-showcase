@@ -7,9 +7,6 @@ import 'package:flutter_skill_showcase/src/presentation/screens/auth/signin/widg
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
 
-  static const routeName = 'signin';
-  static const routePath = '/signin';
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

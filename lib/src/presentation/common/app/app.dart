@@ -13,7 +13,7 @@ class App extends StatelessWidget {
         child: MaterialApp.router(
           title: 'Showcase',
           debugShowCheckedModeBanner: false,
-          routerConfig: router,
+          routerConfig: router.config,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           ),

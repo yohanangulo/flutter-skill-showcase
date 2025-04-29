@@ -5,9 +5,6 @@ import 'package:flutter_skill_showcase/src/presentation/core/auth/bloc/auth_bloc
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  static const routeName = 'profile';
-  static const routePath = '/profile';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

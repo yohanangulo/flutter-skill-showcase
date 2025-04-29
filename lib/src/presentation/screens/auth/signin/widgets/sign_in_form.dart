@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_skill_showcase/src/config/extensions/extensions.dart';
+import 'package:flutter_skill_showcase/src/presentation/common/resources/dimens.dart';
 import 'package:flutter_skill_showcase/src/presentation/core/auth/bloc/auth_bloc.dart';
 import 'package:flutter_skill_showcase/src/presentation/screens/auth/signin/cubit/sign_in_cubit.dart';
 
@@ -34,7 +35,10 @@ class _SignInFormState extends State<SignInForm> {
 
   Widget get _buildLogo {
     return Container(
-      margin: const EdgeInsets.only(top: 80, bottom: 80, left: 20, right: 20),
+      margin: const EdgeInsets.symmetric(
+        vertical: Dimens.spacing1000,
+        horizontal: Dimens.spacing250,
+      ),
       width: 200,
       child: FlutterLogo(size: 100),
     );
@@ -98,11 +102,11 @@ class _SignInFormState extends State<SignInForm> {
           child: Column(
             children: [
               _buildLogo,
-              const SizedBox(height: 20),
+              const SizedBox(height: Dimens.spacing250),
               _buildEmailInput,
-              const SizedBox(height: 12),
+              const SizedBox(height: Dimens.spacing150),
               _buildPasswordInput,
-              const SizedBox(height: 40),
+              const SizedBox(height: Dimens.spacing400),
               if (state.isLoading)
                 const CircularProgressIndicator.adaptive()
               else

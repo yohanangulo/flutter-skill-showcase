@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_skill_showcase/src/config/router/app_navigator.dart';
 import 'package:flutter_skill_showcase/src/core/post/domain.dart';
-import 'package:flutter_skill_showcase/src/presentation/screens/posts/post_detail_screen/posts_detail_screen.dart';
 import 'package:flutter_skill_showcase/src/presentation/screens/posts/posts_list_screen/bloc/posts_list_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class PostsListBody extends StatelessWidget {
   const PostsListBody({super.key, required this.posts});
@@ -45,9 +44,9 @@ class PostsListBody extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              context.pushNamed(
-                PostsDetailScreen.routeName,
-                extra: posts[index],
+              AppNavigator.navigateToPostDetails(
+                posts[index].id.toString(),
+                posts[index],
               );
             },
             child: Container(

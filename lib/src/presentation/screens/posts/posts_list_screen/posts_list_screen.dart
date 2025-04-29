@@ -7,9 +7,6 @@ import 'package:flutter_skill_showcase/src/presentation/screens/posts/posts_list
 class PostsListScreen extends StatelessWidget {
   const PostsListScreen({super.key});
 
-  static const routeName = 'posts_list';
-  static const routePath = '/posts';
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

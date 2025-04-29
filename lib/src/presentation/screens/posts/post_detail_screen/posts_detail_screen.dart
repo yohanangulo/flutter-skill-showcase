@@ -6,9 +6,6 @@ class PostsDetailScreen extends StatelessWidget {
 
   final Post post;
 
-  static const routeName = 'posts_detail_screen';
-  static const routePath = '/posts_detail_screen';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
