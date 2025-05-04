@@ -1,6 +1,8 @@
-# flutter_skill_showcase
+# Flutter Coding Skills Showcase
 
-A new Flutter project.
+| Auth | Post list | Details |
+| :-------------------- | :---------------------- | :---------------------- |
+| <img src="https://github.com/user-attachments/assets/85540008-4f33-4385-a71f-751fa31f87d4" width="225"/> | <img src="https://github.com/user-attachments/assets/8f81aa9d-5912-4ae1-a2d8-26028b09f419" width="225"/> | <img src="https://github.com/user-attachments/assets/0c42960d-50b5-490b-b7c6-96a5400fa930" width="225"/> |
 
 ## Getting Started
 
