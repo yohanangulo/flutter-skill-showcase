@@ -8,8 +8,6 @@ enum Flavor { dev, prod }
 Config get config => getIt<Config>();
 
 class Config {
-  Config({required this.flavor, required this.baseUrl});
-
   final Flavor flavor;
   final String baseUrl;
 
