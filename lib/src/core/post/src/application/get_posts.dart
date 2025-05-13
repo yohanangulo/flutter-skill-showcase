@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_skill_showcase/src/core/post/domain.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,7 +7,7 @@ class GetPosts {
 
   final PostsRepository _postsRepository;
 
-  Future<Either<PostsFailure, List<Post>>> call() async {
-    return _postsRepository.getPosts();
+  Stream<List<Post>> call() {
+    return _postsRepository.watchAllPosts();
   }
 }

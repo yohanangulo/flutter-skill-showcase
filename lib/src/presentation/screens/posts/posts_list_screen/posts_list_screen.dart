@@ -10,7 +10,11 @@ class PostsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<PostsListBloc>()..add(PostsListRequested()),
+      create: (context) => getIt<PostsListBloc>()
+        ..add(
+          PostsListSubscriptionRequested(),
+        ),
+      // ..add(PostsListRequested()),
       child: Builder(
         builder: (context) {
           final bloc = context.read<PostsListBloc>();
