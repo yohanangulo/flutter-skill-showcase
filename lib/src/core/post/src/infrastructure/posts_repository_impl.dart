@@ -20,14 +20,36 @@ class PostsRepositoryImpl implements PostsRepository {
   final PostsLocalDatasource _postsLocalDatasource;
   final AppLogger _logger;
 
-  Stream<List<Post>> watchAllPosts() {
-    return _postsLocalDatasource.watchAllPosts().switchMap((post) {
+  bool _isFirstLoad = true;
+
+  @override
+  Stream<List<Post>> watchAllPosts() async* {
+    if (_isFirstLoad) {
+      _postsLocalDatasource.deleteAllPosts();
+      await _fetchAndSavePosts();
+      _isFirstLoad = false;
+    }
+
+    yield* _postsLocalDatasource.watchAllPosts().switchMap((post) {
       return Stream.value(
         post.map((e) {
-          return Post(userId: e.userId, id: e.id, title: e.title, body: e.body);
+          return Post(
+            userId: e.userId,
+            id: e.id,
+            title: e.title,
+            body: e.body,
+          );
         }).toList(),
       );
     });
+  }
+
+  Future<void> _fetchAndSavePosts() async {
+    final postsOrFailure = await getPosts();
+    postsOrFailure.fold(
+      (failure) => _logger.e('Error getting posts', error: failure),
+      (posts) => _postsLocalDatasource.savePosts(posts),
+    );
   }
 
   @override

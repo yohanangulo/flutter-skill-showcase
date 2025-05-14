@@ -27,4 +27,12 @@ class PostsDao extends DatabaseAccessor<PostsDatabase> with _$PostsDaoMixin {
     final query = select(postsTable);
     return query.watch();
   }
+
+  Future<void> upsertPost(Insertable<PostData> posts) async {
+    await into(postsTable).insertOnConflictUpdate(posts);
+  }
+
+  Future<void> deleteAllPosts() async {
+    await delete(postsTable).go();
+  }
 }

@@ -10,58 +10,76 @@ part 'posts_list_bloc.freezed.dart';
 
 @injectable
 class PostsListBloc extends Bloc<PostsListEvent, PostsListState> {
-  PostsListBloc(this._getPosts) : super(PostsListState.initial()) {
+  PostsListBloc(
+    this._getPosts,
+  ) : super(PostsListState.initial()) {
     on<PostsListRequested>(_onPostsRequested);
     on<PostsListRefreshed>(_onPostsRefreshed);
+    on<PostsListSubscriptionRequested>(_onPostsSubscriptionRequested);
   }
 
   final GetPosts _getPosts;
+
+  void _onPostsSubscriptionRequested(
+    PostsListSubscriptionRequested event,
+    Emitter<PostsListState> emit,
+  ) async {
+    await emit.onEach(
+      _getPosts(),
+      onData: (posts) {
+        emit(state.copyWith(
+          status: PostsListStatus.success,
+          posts: posts,
+        ));
+      },
+    );
+  }
 
   void _onPostsRequested(
     PostsListRequested event,
     Emitter<PostsListState> emit,
   ) async {
-    emit(state.copyWith(status: PostsListStatus.initial, failure: null));
+    // emit(state.copyWith(status: PostsListStatus.initial, failure: null));
 
-    final result = await _getPosts();
+    // final result = await _getPosts();
 
-    result.fold(
-      (failure) {
-        emit(state.copyWith(status: PostsListStatus.failure, failure: failure));
-      },
-      (posts) {
-        emit(state.copyWith(status: PostsListStatus.success, posts: posts));
-      },
-    );
+    // result.fold(
+    //   (failure) {
+    //     emit(state.copyWith(status: PostsListStatus.failure, failure: failure));
+    //   },
+    //   (posts) {
+    //     emit(state.copyWith(status: PostsListStatus.success, posts: posts));
+    //   },
+    // );
   }
 
   void _onPostsRefreshed(
     PostsListRefreshed event,
     Emitter<PostsListState> emit,
   ) async {
-    emit(state.copyWith(isRefreshing: true));
+    // emit(state.copyWith(isRefreshing: true));
 
-    final result = await _getPosts();
+    // final result = await _getPosts();
 
-    result.fold(
-      (failure) {
-        emit(
-          state.copyWith(
-            status: PostsListStatus.failure,
-            failure: failure,
-            isRefreshing: false,
-          ),
-        );
-      },
-      (posts) {
-        emit(
-          state.copyWith(
-            status: PostsListStatus.success,
-            posts: posts,
-            isRefreshing: false,
-          ),
-        );
-      },
-    );
+    // result.fold(
+    //   (failure) {
+    //     emit(
+    //       state.copyWith(
+    //         status: PostsListStatus.failure,
+    //         failure: failure,
+    //         isRefreshing: false,
+    //       ),
+    //     );
+    //   },
+    //   (posts) {
+    //     emit(
+    //       state.copyWith(
+    //         status: PostsListStatus.success,
+    //         posts: posts,
+    //         isRefreshing: false,
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }
