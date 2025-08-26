@@ -70,111 +70,21 @@ This project demonstrates Flutter and mobile development skills, focusing primar
 - **rxdart** - Reactive extensions for Dart
 - **logger** - Configurable logging system
 
-## 🏗️ Interactive Architecture Overview
-
-Click on any component below to explore the codebase structure:
+## 🏗️ App Architecture
 
 ```mermaid
-graph TB
-    subgraph "📱 Presentation Layer"
-        SignIn["🔐 Sign In Screen<br/>lib/src/presentation/screens/auth/signin/"]
-        PostsList["📋 Posts List<br/>lib/src/presentation/screens/posts/posts_list_screen/"]
-        Profile["👤 Profile Screen<br/>lib/src/presentation/screens/profile/"]
-        AuthBloc["🎭 Auth BLoC<br/>lib/src/presentation/core/auth/bloc/"]
-        PostsBloc["📝 Posts BLoC<br/>lib/src/presentation/screens/posts/posts_list_screen/bloc/"]
-    end
-    
-    subgraph "🎯 Domain Layer"
-        AuthDomain["🔐 Auth Domain<br/>lib/src/core/auth/src/domain/"]
-        PostDomain["📝 Post Domain<br/>lib/src/core/post/src/domain/"]
-        AuthService["🔧 Auth Service Interface<br/>lib/src/core/auth/src/domain/auth_service.dart"]
-        PostsRepo["📚 Posts Repository Interface<br/>lib/src/core/post/src/domain/posts_repository.dart"]
-    end
-    
-    subgraph "🔧 Infrastructure Layer"
-        AuthInfra["🔐 Auth Infrastructure<br/>lib/src/core/auth/src/infrastructure/"]
-        PostInfra["📝 Post Infrastructure<br/>lib/src/core/post/src/infrastructure/"]
-        DriftDB["💾 Drift Database<br/>lib/src/core/post/src/infrastructure/datasources/local/"]
-        ApiService["🌐 API Service<br/>lib/src/core/post/src/infrastructure/datasources/remote/"]
-    end
-    
-    subgraph "⚙️ Configuration"
-        ServiceLocator["🔗 Service Locator<br/>lib/src/config/service_locator/"]
-        Router["🧭 App Router<br/>lib/src/config/router/"]
-        Config["⚙️ Environment Config<br/>lib/src/config/config/"]
-    end
+graph TD
+    UI[UI Widget] --> |Events| BLoC[BLoC]
+    BLoC --> |States| UI
 
-    %% Interactions
-    SignIn --> AuthBloc
-    PostsList --> PostsBloc
-    Profile --> AuthBloc
-    
-    AuthBloc --> AuthService
-    PostsBloc --> PostsRepo
-    
-    AuthService --> AuthInfra
-    PostsRepo --> PostInfra
-    
-    PostInfra --> DriftDB
-    PostInfra --> ApiService
-    
-    AuthBloc --> ServiceLocator
-    PostsBloc --> ServiceLocator
-    AuthInfra --> ServiceLocator
-    PostInfra --> ServiceLocator
-    
-    SignIn --> Router
-    PostsList --> Router
-    Profile --> Router
+    BLoC --> |Optional| UseCase[Use Cases]
+    BLoC --> |Direct Access| Repository[Repository]
+    UseCase --> Repository
 
-    %% Click events for navigation
-    click SignIn "https://github.com/your-repo/tree/main/lib/src/presentation/screens/auth/signin" "Navigate to Sign In implementation"
-    click PostsList "https://github.com/your-repo/tree/main/lib/src/presentation/screens/posts/posts_list_screen" "View Posts List implementation"
-    click Profile "https://github.com/your-repo/tree/main/lib/src/presentation/screens/profile" "Explore Profile screen"
-    click AuthBloc "https://github.com/your-repo/tree/main/lib/src/presentation/core/auth/bloc" "Check Auth BLoC state management"
-    click PostsBloc "https://github.com/your-repo/tree/main/lib/src/presentation/screens/posts/posts_list_screen/bloc" "View Posts BLoC logic"
-    click AuthDomain "https://github.com/your-repo/tree/main/lib/src/core/auth/src/domain" "Explore Auth domain models"
-    click PostDomain "https://github.com/your-repo/tree/main/lib/src/core/post/src/domain" "View Post domain entities"
-    click AuthInfra "https://github.com/your-repo/tree/main/lib/src/core/auth/src/infrastructure" "See Auth implementation details"
-    click PostInfra "https://github.com/your-repo/tree/main/lib/src/core/post/src/infrastructure" "Check Post infrastructure"
-    click DriftDB "https://github.com/your-repo/tree/main/lib/src/core/post/src/infrastructure/datasources/local" "View local database setup"
-    click ApiService "https://github.com/your-repo/tree/main/lib/src/core/post/src/infrastructure/datasources/remote" "Explore API integration"
-    click ServiceLocator "https://github.com/your-repo/tree/main/lib/src/config/service_locator" "See dependency injection setup"
-    click Router "https://github.com/your-repo/tree/main/lib/src/config/router" "Check routing configuration"
-    click Config "https://github.com/your-repo/tree/main/lib/src/config/config" "View app configuration"
+    Repository --> API[API Service]
+    Repository --> DB[Local Database]
 
-    %% Styling
-    classDef presentation fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000,cursor:pointer
-    classDef domain fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000,cursor:pointer
-    classDef infrastructure fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000,cursor:pointer
-    classDef config fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000,cursor:pointer
-    
-    class SignIn,PostsList,Profile,AuthBloc,PostsBloc presentation
-    class AuthDomain,PostDomain,AuthService,PostsRepo domain
-    class AuthInfra,PostInfra,DriftDB,ApiService infrastructure
-    class ServiceLocator,Router,Config config
-```
-
-### 📊 Data Flow Visualization
-
-```mermaid
-journey
-    title User Authentication & Post Viewing Journey
-    section Authentication
-      Open App           : 5: User
-      View Sign In       : 4: User, UI
-      Enter Credentials  : 3: User, UI
-      Validate Data      : 4: BLoC, UseCase
-      Call Auth API      : 3: Repository, API
-      Store Token        : 5: SecureStorage
-      Navigate to Posts  : 5: User, Router
-    section Posts Management
-      Load Posts Screen  : 5: User, UI
-      Fetch from Cache   : 4: BLoC, LocalDB
-      Call Posts API     : 3: Repository, API
-      Update Local Cache : 4: DriftDB
-      Display Posts      : 5: User, UI
-      View Post Details  : 5: User, Router
+    style UseCase stroke-dasharray: 5 5
 ```
 
 ## Project Structure
