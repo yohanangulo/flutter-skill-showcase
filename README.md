@@ -125,8 +125,8 @@ lib/
 ### 1. Clone the repository
 
 ```bash
-git clone [repository-url]
-cd flutter_skill_showcase
+git clone https://github.com/yohanangulo/flutter-skill-showcase.git \
+&& cd flutter_skill_showcase
 ```
 
 ### 2. Install dependencies
@@ -138,7 +138,7 @@ flutter pub get
 ### 3. Generate code
 
 ```bash
-flutter packages pub run build_runner build --delete-conflicting-outputs
+make build
 ```
 
 ### 4. Environment setup
@@ -181,7 +181,7 @@ flutter test
 When modifying models or services, regenerate code:
 
 ```bash
-flutter packages pub run build_runner build --delete-conflicting-outputs
+make build
 ```
 
 ## Implemented Features
@@ -190,7 +190,6 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 
 - Sign in with email and password
 - Secure JWT token storage
-- Auto-logout on token expiration
 - Route guards for protected screens
 
 ### 📱 Posts Management
@@ -206,7 +205,6 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 - Clear separation of concerns
 - Configured dependency injection
 - Centralized error handling
-- Environment-based logging levels
 
 ## Contributing
 
@@ -232,26 +230,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact & Support
 
 - **GitHub Issues**: For bug reports or feature requests
-- **Email**: [your-email@domain.com]
-- **LinkedIn**: [Your LinkedIn profile]
-
-## Roadmap
-
-### 🚧 Upcoming Features
-
-- [ ] Complete offline mode
-- [ ] Push notifications
-- [ ] Dark/Light theme
-- [ ] Internationalization (i18n)
-- [ ] Integration tests
-- [ ] CI/CD with GitHub Actions
-
-### 🎯 Technical Improvements
-
-- [ ] Performance monitoring
-- [ ] Error tracking (Crashlytics)
-- [ ] User analytics
-- [ ] Bundle size optimization
+- **Email**: anguloyohan98@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/yohan-angulo
 
 ---
 
