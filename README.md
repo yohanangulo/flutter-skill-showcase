@@ -6,9 +6,9 @@ A modern Flutter application demonstrating clean architecture principles, develo
 
 ## Screenshots
 
-|                                                  Sample                                                  |                                                Posts List                                                |                                                 Details                                                  |
-| :------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/user-attachments/assets/bfa0432b-0099-4171-a143-26b76d963cc1" width="275"/> | <img src="https://github.com/user-attachments/assets/8f81aa9d-5912-4ae1-a2d8-26028b09f419" width="275"/> | <img src="https://github.com/user-attachments/assets/0c42960d-50b5-490b-b7c6-96a5400fa930" width="275"/> |
+|                                                   Sample                                                   |                                                 Posts List                                                 |                                                  Details                                                   |
+| :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
+| <img src="https://github.com/user-attachments/assets/bfa0432b-0099-4171-a143-26b76d963cc1" width="250px"/> | <img src="https://github.com/user-attachments/assets/8f81aa9d-5912-4ae1-a2d8-26028b09f419" width="250px"/> | <img src="https://github.com/user-attachments/assets/0c42960d-50b5-490b-b7c6-96a5400fa930" width="250px"/> |
 
 ## Purpose
 
